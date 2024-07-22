@@ -15,28 +15,28 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface InvitationProps {
+interface CompanyAccessProps {
+  name: string;
+  email: string;
+  message: string;
+  avatar: string;
   actionLink: string;
-  inviterName: string;
-  inviterAvatar: string;
-  teamName: string;
-  logo: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const InvitationEmail = ({
+export const CompanyAccessEmail = ({
+  avatar,
+  email,
+  message,
+  name,
   actionLink,
-  inviterAvatar,
-  logo,
-  teamName,
-  inviterName,
-}: InvitationProps) => (
+}: CompanyAccessProps) => (
   <Html>
     <Head />
-    <Preview>You have a new invite</Preview>
+    <Preview>There is a new access request</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
@@ -46,42 +46,40 @@ export const InvitationEmail = ({
             height="30"
             alt="React Email Template"
           />
-          <Heading style={title}>Join {inviterName} on RET</Heading>
+          <Heading style={title}>{name} is requesting access</Heading>
           <Text style={description}>
-            {inviterName} has invited you to collaborate with {teamName}.
+            New access request with the following details:
           </Text>
           <Section style={avatarSection}>
             <Row>
-              <Column align="right">
-                <Img
-                  style={avatarStyle}
-                  src={inviterAvatar}
-                  width="64"
-                  height="64"
-                />
-              </Column>
               <Column align="center">
-                <Img
-                  src={`${baseUrl}/static/arrow.png`}
-                  width="12"
-                  height="9"
-                />
-              </Column>
-              <Column align="left">
-                <Img style={avatarStyle} src={logo} width="64" height="64" />
+                <Img style={avatarStyle} src={avatar} width="64" height="64" />
               </Column>
             </Row>
           </Section>
+
+          <Text>
+            <ul style={{ paddingLeft: "1em" }}>
+              <li style={listItem}>
+                <b>Name:</b> {name || "Not provided"}
+              </li>
+
+              <li style={listItem}>
+                <b>Email:</b> {email}
+              </li>
+
+              <li style={listItem}>
+                <b>Message:</b> <Text style={messageStyle}>{message}</Text>
+              </li>
+            </ul>
+          </Text>
+
           <Section style={buttonSection}>
             <Button style={button} href={actionLink}>
-              Join Now
+              Manage Permissions
             </Button>
           </Section>
-          <Text style={safeguard}>
-            If you were not expecting this invitation, you can ignore this
-            email.
-          </Text>
-          <Hr />
+          <Hr style={hr} />
           <Text style={footer}>
             React Email Templates, Suite 425 59431 Allen View, East Sherell, MT
             81789
@@ -92,15 +90,16 @@ export const InvitationEmail = ({
   </Html>
 );
 
-InvitationEmail.PreviewProps = {
+CompanyAccessEmail.PreviewProps = {
+  avatar: "https://randomuser.me/api/portraits/med/men/5.jpg",
+  email: "johndoe@example.com",
+  message:
+    "Hi Admin, I would like to access the dashboard of our company Best Regards Inc.. If you find the time, please grant permissions to my account.",
+  name: "John Doe",
   actionLink: "https://example.com",
-  inviterAvatar: "https://randomuser.me/api/portraits/med/women/32.jpg",
-  logo: `${baseUrl}/static/ret-padding.png`,
-  teamName: "BestRegards Team",
-  inviterName: "Margaret Hamilton",
-} as InvitationProps;
+} as CompanyAccessProps;
 
-export default InvitationEmail;
+export default CompanyAccessEmail;
 
 const main: React.CSSProperties = {
   backgroundColor: "#FBFBFB",
@@ -155,7 +154,15 @@ const button: React.CSSProperties = {
   padding: "12px 16px",
 };
 
-const safeguard: React.CSSProperties = { color: "#71717a", marginTop: "24px" };
+const hr: React.CSSProperties = { marginTop: "24px" };
+
+const listItem: React.CSSProperties = { marginTop: "16px" };
+
+const messageStyle: React.CSSProperties = {
+  marginTop: "16px",
+  fontStyle: "italic",
+  display: "inline",
+};
 
 const footer: React.CSSProperties = {
   color: "#71717a",

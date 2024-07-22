@@ -1,6 +1,5 @@
 import {
   Body,
-  Button,
   Container,
   Head,
   Heading,
@@ -13,18 +12,18 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface ResetPasswordProps {
-  loginLink: string;
+interface LoginCodeProps {
+  code: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const ResetPasswordEmail = ({ loginLink }: ResetPasswordProps) => (
+export const LoginCodeEmail = ({ code }: LoginCodeProps) => (
   <Html>
     <Head />
-    <Preview>Click this link to reset your password</Preview>
+    <Preview>Your RET login code</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
@@ -34,20 +33,15 @@ export const ResetPasswordEmail = ({ loginLink }: ResetPasswordProps) => (
             height="30"
             alt="React Email Template"
           />
-          <Heading style={title}>Reset your password</Heading>
+          <Heading style={title}>Here's your RET login code</Heading>
           <Text style={description}>
-            We've received a request to reset your password for your account on
-            RET.
-            <br />
-            To proceed with the password reset, please click the link below.
+            Continue signing in to RET by entering the code below:
           </Text>
-          <Section style={buttonSection}>
-            <Button style={button} href={loginLink}>
-              Reset password
-            </Button>
+          <Section style={codeContainer}>
+            <Text style={codeStyle}>{code}</Text>
           </Section>
           <Text style={safeguard}>
-            If you didn&apos;t request this, you can safely ignore this email.
+            If you didn&apos;t request this, contact us at support@example.com.
           </Text>
           <Text style={signOff}>
             Best,
@@ -65,11 +59,11 @@ export const ResetPasswordEmail = ({ loginLink }: ResetPasswordProps) => (
   </Html>
 );
 
-ResetPasswordEmail.PreviewProps = {
-  loginLink: "https://example.com",
-} as ResetPasswordProps;
+LoginCodeEmail.PreviewProps = {
+  code: "123456",
+} as LoginCodeProps;
 
-export default ResetPasswordEmail;
+export default LoginCodeEmail;
 
 const main: React.CSSProperties = {
   backgroundColor: "#FBFBFB",
@@ -102,22 +96,26 @@ const description: React.CSSProperties = {
   fontSize: "16px",
 };
 
-const buttonSection: React.CSSProperties = {
-  textAlign: "center",
+const codeContainer: React.CSSProperties = {
+  background: "#F2F2F1",
+  borderRadius: "4px",
+  verticalAlign: "middle",
+  width: "280px",
   marginTop: "24px",
 };
 
-const button: React.CSSProperties = {
-  display: "inline-flex",
-  justifyContent: "center",
-  alignItems: "center",
-  whiteSpace: "nowrap",
-  borderRadius: "6px",
-  fontSize: "14px",
-  fontWeight: "600",
-  backgroundColor: "#18181b",
-  color: "#fafafa",
-  padding: "12px 16px",
+const codeStyle: React.CSSProperties = {
+  color: "#09090B",
+  display: "inline-block",
+  fontSize: "32px",
+  fontWeight: 700,
+  letterSpacing: "6px",
+  lineHeight: "40px",
+  paddingBottom: "8px",
+  paddingTop: "8px",
+  margin: 0,
+  width: "100%",
+  textAlign: "center",
 };
 
 const safeguard: React.CSSProperties = { color: "#71717a", marginTop: "24px" };

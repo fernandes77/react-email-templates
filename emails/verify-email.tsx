@@ -13,18 +13,18 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface ResetPasswordProps {
-  loginLink: string;
+interface VerifyEmailProps {
+  actionLink: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const ResetPasswordEmail = ({ loginLink }: ResetPasswordProps) => (
+export const VerifyEmailEmail = ({ actionLink }: VerifyEmailProps) => (
   <Html>
     <Head />
-    <Preview>Click this link to reset your password</Preview>
+    <Preview>Click this link to verify your email</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
@@ -34,21 +34,17 @@ export const ResetPasswordEmail = ({ loginLink }: ResetPasswordProps) => (
             height="30"
             alt="React Email Template"
           />
-          <Heading style={title}>Reset your password</Heading>
+          <Heading style={title}>Verify you email address</Heading>
           <Text style={description}>
-            We've received a request to reset your password for your account on
-            RET.
+            Thank you for creating an account on RET!
             <br />
-            To proceed with the password reset, please click the link below.
+            Please verify your email address by clicking the button below.
           </Text>
           <Section style={buttonSection}>
-            <Button style={button} href={loginLink}>
-              Reset password
+            <Button style={button} href={actionLink}>
+              Verify Email
             </Button>
           </Section>
-          <Text style={safeguard}>
-            If you didn&apos;t request this, you can safely ignore this email.
-          </Text>
           <Text style={signOff}>
             Best,
             <br />
@@ -65,11 +61,11 @@ export const ResetPasswordEmail = ({ loginLink }: ResetPasswordProps) => (
   </Html>
 );
 
-ResetPasswordEmail.PreviewProps = {
-  loginLink: "https://example.com",
-} as ResetPasswordProps;
+VerifyEmailEmail.PreviewProps = {
+  actionLink: "https://example.com",
+} as VerifyEmailProps;
 
-export default ResetPasswordEmail;
+export default VerifyEmailEmail;
 
 const main: React.CSSProperties = {
   backgroundColor: "#FBFBFB",
@@ -119,8 +115,6 @@ const button: React.CSSProperties = {
   color: "#fafafa",
   padding: "12px 16px",
 };
-
-const safeguard: React.CSSProperties = { color: "#71717a", marginTop: "24px" };
 
 const signOff: React.CSSProperties = { color: "#71717a", marginTop: "16px" };
 
