@@ -103,7 +103,7 @@ InvitationEmail.PreviewProps = {
 export default InvitationEmail;
 
 const main: React.CSSProperties = {
-  backgroundColor: "#FBFBFB",
+  backgroundColor: "#fafafa",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 };
@@ -120,7 +120,7 @@ const box: React.CSSProperties = {
 };
 
 const title: React.CSSProperties = {
-  color: "#09090B",
+  color: "#09090b",
   fontSize: "24px",
   fontWeight: "bold",
   padding: "0",
@@ -150,7 +150,7 @@ const button: React.CSSProperties = {
   borderRadius: "6px",
   fontSize: "14px",
   fontWeight: "600",
-  backgroundColor: "#18181b",
+  backgroundColor: "#18181B",
   color: "#fafafa",
   padding: "12px 16px",
 };

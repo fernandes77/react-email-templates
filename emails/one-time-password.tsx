@@ -12,7 +12,7 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface LoginCodeProps {
+interface OneTimePasswordProps {
   code: string;
 }
 
@@ -20,7 +20,7 @@ const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const LoginCodeEmail = ({ code }: LoginCodeProps) => (
+export const OneTimePasswordEmail = ({ code }: OneTimePasswordProps) => (
   <Html>
     <Head />
     <Preview>Your RET login code</Preview>
@@ -59,14 +59,14 @@ export const LoginCodeEmail = ({ code }: LoginCodeProps) => (
   </Html>
 );
 
-LoginCodeEmail.PreviewProps = {
-  code: "123456",
-} as LoginCodeProps;
+OneTimePasswordEmail.PreviewProps = {
+  code: "481516",
+} as OneTimePasswordProps;
 
-export default LoginCodeEmail;
+export default OneTimePasswordEmail;
 
 const main: React.CSSProperties = {
-  backgroundColor: "#FBFBFB",
+  backgroundColor: "#fafafa",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 };
@@ -83,7 +83,7 @@ const box: React.CSSProperties = {
 };
 
 const title: React.CSSProperties = {
-  color: "#09090B",
+  color: "#09090b",
   fontSize: "24px",
   fontWeight: "bold",
   padding: "0",
@@ -105,7 +105,7 @@ const codeContainer: React.CSSProperties = {
 };
 
 const codeStyle: React.CSSProperties = {
-  color: "#09090B",
+  color: "#09090b",
   display: "inline-block",
   fontSize: "32px",
   fontWeight: 700,

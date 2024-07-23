@@ -57,22 +57,12 @@ export const CompanyAccessEmail = ({
               </Column>
             </Row>
           </Section>
-
-          <Text>
-            <ul style={{ paddingLeft: "1em" }}>
-              <li style={listItem}>
-                <b>Name:</b> {name || "Not provided"}
-              </li>
-
-              <li style={listItem}>
-                <b>Email:</b> {email}
-              </li>
-
-              <li style={listItem}>
-                <b>Message:</b> <Text style={messageStyle}>{message}</Text>
-              </li>
-            </ul>
-          </Text>
+          <Text style={label}>Name</Text>
+          <Text style={detail}>{name}</Text>
+          <Text style={label}>Email</Text>
+          <Text style={detail}>{email}</Text>
+          <Text style={label}>Message</Text>
+          <Text style={detail}>{message}</Text>
 
           <Section style={buttonSection}>
             <Button style={button} href={actionLink}>
@@ -92,17 +82,17 @@ export const CompanyAccessEmail = ({
 
 CompanyAccessEmail.PreviewProps = {
   avatar: "https://randomuser.me/api/portraits/med/men/5.jpg",
-  email: "johndoe@example.com",
+  email: "johnvonneumann@example.com",
   message:
     "Hi Admin, I would like to access the dashboard of our company Best Regards Inc.. If you find the time, please grant permissions to my account.",
-  name: "John Doe",
+  name: "John Von Neumann",
   actionLink: "https://example.com",
 } as CompanyAccessProps;
 
 export default CompanyAccessEmail;
 
 const main: React.CSSProperties = {
-  backgroundColor: "#FBFBFB",
+  backgroundColor: "#fafafa",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 };
@@ -119,7 +109,7 @@ const box: React.CSSProperties = {
 };
 
 const title: React.CSSProperties = {
-  color: "#09090B",
+  color: "#09090b",
   fontSize: "24px",
   fontWeight: "bold",
   padding: "0",
@@ -136,6 +126,10 @@ const description: React.CSSProperties = {
   fontSize: "16px",
 };
 
+const label: React.CSSProperties = { fontWeight: 600, marginBottom: 0 };
+
+const detail: React.CSSProperties = { margin: 0 };
+
 const buttonSection: React.CSSProperties = {
   textAlign: "center",
   marginTop: "24px",
@@ -149,20 +143,12 @@ const button: React.CSSProperties = {
   borderRadius: "6px",
   fontSize: "14px",
   fontWeight: "600",
-  backgroundColor: "#18181b",
+  backgroundColor: "#18181B",
   color: "#fafafa",
   padding: "12px 16px",
 };
 
 const hr: React.CSSProperties = { marginTop: "24px" };
-
-const listItem: React.CSSProperties = { marginTop: "16px" };
-
-const messageStyle: React.CSSProperties = {
-  marginTop: "16px",
-  fontStyle: "italic",
-  display: "inline",
-};
 
 const footer: React.CSSProperties = {
   color: "#71717a",

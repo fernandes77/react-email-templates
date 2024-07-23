@@ -34,7 +34,7 @@ export const VerifyEmailEmail = ({ actionLink }: VerifyEmailProps) => (
             height="30"
             alt="React Email Template"
           />
-          <Heading style={title}>Verify you email address</Heading>
+          <Heading style={title}>Verify your email address</Heading>
           <Text style={description}>
             Thank you for creating an account on RET!
             <br />
@@ -68,7 +68,7 @@ VerifyEmailEmail.PreviewProps = {
 export default VerifyEmailEmail;
 
 const main: React.CSSProperties = {
-  backgroundColor: "#FBFBFB",
+  backgroundColor: "#fafafa",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 };
@@ -85,7 +85,7 @@ const box: React.CSSProperties = {
 };
 
 const title: React.CSSProperties = {
-  color: "#09090B",
+  color: "#09090b",
   fontSize: "24px",
   fontWeight: "bold",
   padding: "0",
@@ -111,7 +111,7 @@ const button: React.CSSProperties = {
   borderRadius: "6px",
   fontSize: "14px",
   fontWeight: "600",
-  backgroundColor: "#18181b",
+  backgroundColor: "#18181B",
   color: "#fafafa",
   padding: "12px 16px",
 };
