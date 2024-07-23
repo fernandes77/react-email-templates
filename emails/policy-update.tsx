@@ -30,8 +30,8 @@ export const PolicyUpdateEmail = ({ name }: PolicyUpdateProps) => (
         <Section style={box}>
           <Img
             src={`${baseUrl}/static/ret.png`}
-            width="40"
-            height="30"
+            width="36"
+            height="36"
             alt="React Email Template"
           />
           <Heading style={title}>React Email Templates Update</Heading>
