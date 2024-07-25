@@ -92,6 +92,8 @@ const container: React.CSSProperties = {
   margin: "0 auto",
   borderRadius: "8px",
   border: "1px solid #e4e4e7",
+  boxShadow:
+    "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
 };
 
 const box: React.CSSProperties = {
