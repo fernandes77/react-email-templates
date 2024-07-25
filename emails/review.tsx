@@ -84,6 +84,7 @@ export const ResetPasswordEmail = ({
 
 ResetPasswordEmail.PreviewProps = {
   name: "Alan",
+  reviewLink: "https://example.com",
 } as ResetPasswordProps;
 
 export default ResetPasswordEmail;
