@@ -116,8 +116,8 @@ export const OrderReceiptEmail = ({
                   <Text style={boldStyle}>Order Details</Text>
                 </Column>
               </Row>
-              {products.map((product) => (
-                <Row style={marginRow}>
+              {products.map((product, index) => (
+                <Row style={marginRow} key={index}>
                   <Column>
                     <Text style={mutedStyle}>
                       {product.name} x {product.quantity}
