@@ -101,9 +101,9 @@ export const OrderReceiptEmail = ({
               <Column align="right">
                 <Button href={trackingLink} style={trackingButton}>
                   <Img
-                    src={`${baseUrl}/static/truck.svg`}
-                    width={16}
-                    height={16}
+                    src={`${baseUrl}/static/truck.png`}
+                    width={14}
+                    height={14}
                   />
                 </Button>
               </Column>
