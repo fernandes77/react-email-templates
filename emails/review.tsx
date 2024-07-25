@@ -1,6 +1,6 @@
 import {
   Body,
-  Button,
+  Column,
   Container,
   Head,
   Heading,
@@ -9,6 +9,7 @@ import {
   Img,
   Link,
   Preview,
+  Row,
   Section,
   Text,
 } from "@react-email/components";
@@ -16,16 +17,20 @@ import * as React from "react";
 
 interface ResetPasswordProps {
   name: string;
+  reviewLink: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const ResetPasswordEmail = ({ name }: ResetPasswordProps) => (
+export const ResetPasswordEmail = ({
+  name,
+  reviewLink,
+}: ResetPasswordProps) => (
   <Html>
     <Head />
-    <Preview>Welcome to RET</Preview>
+    <Preview>{name}, your opinion is important!</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
@@ -35,27 +40,31 @@ export const ResetPasswordEmail = ({ name }: ResetPasswordProps) => (
             height="36"
             alt="React Email Template"
           />
-          <Heading style={title}>Hi {name}, welcome to RET</Heading>
+          <Heading style={title}>Leave your review</Heading>
           <Text style={description}>
-            Congratulations! You're joining over 5 trillion developers around
-            the world who use RET to develop emails faster and in a familiar
-            language.
+            {name}, do you have a moment? We would like to know if everything
+            went well for you. Take a moment to review our product.
           </Text>
-          <Text style={description}>
-            You can view your templates and a variety of other information about
-            your account right from your dashboard.
-          </Text>
-          <Section style={buttonSection}>
-            <Button style={button} href="https://example.com">
-              View your dashboard
-            </Button>
+          <Section style={starsSection}>
+            <Row>
+              <Column align="center">
+                <Link href={reviewLink}>
+                  {Array(5)
+                    .fill(0)
+                    .map((_, index) => (
+                      <Img
+                        key={index}
+                        src={`${baseUrl}/static/star.gif`}
+                        alt="Amazon Rating"
+                        style={rating}
+                      />
+                    ))}
+                </Link>
+              </Column>
+            </Row>
           </Section>
           <Text style={description}>
-            If you haven't started yet, you might find our{" "}
-            <Link style={link} href="https://example.com">
-              docs
-            </Link>{" "}
-            handy.
+            Your reviews will be posted on RET using your public name.
           </Text>
           <Text style={signOff}>
             Best,
@@ -110,30 +119,10 @@ const description: React.CSSProperties = {
   fontSize: "16px",
 };
 
-const buttonSection: React.CSSProperties = {
-  textAlign: "center",
-  marginTop: "24px",
-  marginBottom: "16px",
-};
+const rating: React.CSSProperties = { display: "inline-block" };
 
-const button: React.CSSProperties = {
-  display: "inline-flex",
-  justifyContent: "center",
-  alignItems: "center",
-  whiteSpace: "nowrap",
-  borderRadius: "6px",
-  fontSize: "14px",
-  fontWeight: "600",
-  backgroundColor: "#18181B",
-  color: "#fafafa",
-  padding: "12px 16px",
-};
-
-const link: React.CSSProperties = {
-  color: "#09090b",
-  textDecoration: "underline",
-  textUnderlineOffset: "4px",
-  fontWeight: 600,
+const starsSection: React.CSSProperties = {
+  margin: "24px 0",
 };
 
 const signOff: React.CSSProperties = { color: "#71717a", marginTop: "16px" };
