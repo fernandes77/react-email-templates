@@ -69,17 +69,15 @@ export const B2BEventFollowUpEmail = ({
             goals:
           </Text>
           <Text style={description}>
-            <ul style={{ margin: "16px 0" }}>
-              <li style={{ marginTop: "8px" }}>
+            <ul style={list}>
+              <li style={listItem}>
                 Build emails with React that will help you move faster
               </li>
-              <li style={{ marginTop: "8px" }}>
+              <li style={listItem}>
                 Give you 50 email templates that you can copy and paste into
                 your application and make changes accordingly
               </li>
-              <li style={{ marginTop: "8px" }}>
-                Send emails to any email client{" "}
-              </li>
+              <li style={listItem}>Send emails to any email client </li>
             </ul>
           </Text>
           <Text style={description}>
@@ -150,7 +148,9 @@ const title: React.CSSProperties = {
   marginTop: "32px",
 };
 
-const bold: React.CSSProperties = { fontWeight: 600 };
+const list: React.CSSProperties = { margin: "16px 0" };
+
+const listItem: React.CSSProperties = { marginTop: "8px" };
 
 const description: React.CSSProperties = {
   marginTop: "24px",
