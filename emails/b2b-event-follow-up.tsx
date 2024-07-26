@@ -15,42 +15,39 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface B2BApproachProps {
+interface B2BEventFollowUpProps {
   recipientName: string;
-  callDate: string;
+  recipientCompanyName: string;
+  eventName: string;
   calendarLink: string;
-  salesPersonName: string;
-  salesPersonOccupation: string;
-  salesPersonAvatar: string;
+  avatar: string;
+  name: string;
+  occupation: string;
 }
 
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const B2BApproachEmail = ({
-  salesPersonName,
-  salesPersonOccupation,
-  salesPersonAvatar,
+export const B2BEventFollowUpEmail = ({
+  eventName,
+  avatar,
   calendarLink,
-  callDate,
   recipientName,
-}: B2BApproachProps) => (
+  recipientCompanyName,
+  name,
+  occupation,
+}: B2BEventFollowUpProps) => (
   <Html>
     <Head />
-    <Preview>There is a new access request</Preview>
+    <Preview>Nice meeting you at {eventName}!</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={box}>
           <Section>
             <Row>
               <Column width={80}>
-                <Img
-                  style={avatarStyle}
-                  src={salesPersonAvatar}
-                  width="64"
-                  height="64"
-                />
+                <Img style={avatarStyle} src={avatar} width="64" height="64" />
               </Column>
               <Column>
                 <Img
@@ -64,23 +61,33 @@ export const B2BApproachEmail = ({
           </Section>
           <Heading style={title}>Hi {recipientName},</Heading>
           <Text style={description}>
-            I see you're having a lot of success. Congratulations!
+            It was really nice to meet you at {eventName}! I loved learning more
+            about {recipientCompanyName}.
           </Text>
           <Text style={description}>
-            I thought you might be interested to know how we helped a similar
-            company{" "}
-            <Link href="https://example.com" style={link}>
-              achieve these results
-            </Link>
-            .
+            Here's how React Email Templates Inc. can help you achieve your
+            goals:
           </Text>
           <Text style={description}>
-            I know things must be crazy going on at your company right now, but
-            if you'd like to know more, let's make a quick call.
+            <ul style={{ margin: "16px 0" }}>
+              <li style={{ marginTop: "8px" }}>
+                Build emails with React that will help you move faster
+              </li>
+              <li style={{ marginTop: "8px" }}>
+                Give you 50 email templates that you can copy and paste into
+                your application and make changes accordingly
+              </li>
+              <li style={{ marginTop: "8px" }}>
+                Send emails to any email client{" "}
+              </li>
+            </ul>
           </Text>
           <Text style={description}>
-            How does <b style={bold}>{callDate}</b> look on your calendar?
-            Alternatively, here's a{" "}
+            We agreed to schedule a call to discuss the conditions of our
+            collaboration.
+          </Text>
+          <Text style={description}>
+            Here's a{" "}
             <Link href={calendarLink} style={link}>
               link to my calendar
             </Link>{" "}
@@ -89,9 +96,9 @@ export const B2BApproachEmail = ({
           <Text style={signOff}>
             Best,
             <br />
-            {salesPersonName}
+            {name}
             <br />
-            {salesPersonOccupation} at RET Team
+            {occupation} at RET Team
           </Text>
           <Hr style={hr} />
           <Text style={footer}>
@@ -104,16 +111,17 @@ export const B2BApproachEmail = ({
   </Html>
 );
 
-B2BApproachEmail.PreviewProps = {
-  recipientName: "John",
+B2BEventFollowUpEmail.PreviewProps = {
+  avatar: "https://randomuser.me/api/portraits/men/74.jpg",
   calendarLink: "https://example.com",
-  callDate: "August 10, Saturday",
-  salesPersonAvatar: "https://randomuser.me/api/portraits/women/90.jpg",
-  salesPersonName: "Margaret Hamilton",
-  salesPersonOccupation: "Marketing Manager",
-} as B2BApproachProps;
+  eventName: "Inbox Conference",
+  name: "Alan Turing",
+  occupation: "CEO",
+  recipientCompanyName: "Best Regards Inc.",
+  recipientName: "John",
+} as B2BEventFollowUpProps;
 
-export default B2BApproachEmail;
+export default B2BEventFollowUpEmail;
 
 const main: React.CSSProperties = {
   backgroundColor: "#fafafa",
