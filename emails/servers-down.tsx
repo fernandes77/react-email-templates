@@ -15,7 +15,7 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface ApologyProps {
+interface ServersDownProps {
   name: string;
 }
 
@@ -23,7 +23,7 @@ const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const ApologyEmail = ({ name }: ApologyProps) => (
+export const ServersDownEmail = ({ name }: ServersDownProps) => (
   <Html>
     <Head />
     <Preview>Our services are currently down</Preview>
@@ -78,11 +78,11 @@ export const ApologyEmail = ({ name }: ApologyProps) => (
   </Html>
 );
 
-ApologyEmail.PreviewProps = {
+ServersDownEmail.PreviewProps = {
   name: "Alan",
-} as ApologyProps;
+} as ServersDownProps;
 
-export default ApologyEmail;
+export default ServersDownEmail;
 
 const main: React.CSSProperties = {
   backgroundColor: "#fafafa",
