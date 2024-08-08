@@ -150,7 +150,7 @@ const title: React.CSSProperties = {
 
 const list: React.CSSProperties = { margin: "16px 0" };
 
-const listItem: React.CSSProperties = { marginTop: "8px" };
+const listItem: React.CSSProperties = { marginTop: "8px", lineHeight: "28px" };
 
 const description: React.CSSProperties = {
   marginTop: "24px",

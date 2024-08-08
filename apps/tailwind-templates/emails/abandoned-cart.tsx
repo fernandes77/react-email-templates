@@ -14,7 +14,6 @@ import {
   Text,
 } from "@react-email/components";
 import * as React from "react";
-import tailwindConfig from "../tailwindConfig";
 
 interface AbandonedCartProps {
   productName: string;
